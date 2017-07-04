@@ -81,6 +81,11 @@ void ofxSollingerDSP::setPicture(const ofPolyline & line, const ofRectangle & bo
 		);
 	}
 
+	//if empty then add a blank point
+	if (dspPoints.empty()) {
+		dspPoints.push_back(DspPoint(0, 0, 0, 0, 0, 0, true, false, true));
+	}
+
 	if (!LGDspDll_SetPicture("TestCat", "TestPic", dspPoints.size(), (DspPoint*) dspPoints.data())) {
 		this->printError();
 	}
